@@ -27,6 +27,7 @@
     vm.onSaveProject       = onSaveProject;
     vm.onExportProjectJson = onExportProjectJson;
     vm.onExportTreeJson    = onExportTreeJson;
+    vm.onExportTreesJson   = onExportTreesJson;
     vm.onExportNodesJson   = onExportNodesJson;
     vm.onImportProjectJson = onImportProjectJson;
     vm.onImportTreeJson    = onImportTreeJson;
@@ -116,6 +117,10 @@
     }
     function onExportTreeJson() {
       $state.go('editor.export', {type:'tree', format:'json'});
+      return false;
+    }
+    function onExportTreesJson() {
+      $state.go('editor.export', {type:'trees', format:'json'});
       return false;
     }
     function onExportNodesJson() {

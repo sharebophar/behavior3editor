@@ -46,6 +46,30 @@ b3e.editor.ExportManager = function(editor) {
     return data;
   };
   
+  // 批量导出的核心逻辑，就看怎么实现了
+  this.treesToData = function() {
+    var project = editor.project.get();
+    if (!project) return;
+
+    var tree = project.trees.getSelected();
+
+    var data = {
+      version      : b3e.VERSION,
+      scope        : 'project',
+      selectedTree : (tree?tree._id:null),
+      trees        : [],
+      custom_nodes : this.nodesToData()
+    };
+
+    project.trees.each(function(tree) {
+      var d = this.treeToData(tree, true);
+      d.id = tree._id;
+      data.trees.push(d);
+    }, this);
+
+    return data;
+  };
+  
   this.treeToData = function(tree, ignoreNodes) {
     var project = editor.project.get();
     if (!project) return;

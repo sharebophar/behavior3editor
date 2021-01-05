@@ -49,6 +49,9 @@
       else if (vm.type === 'tree' && vm.format === 'json') {
         _createJson(e.treeToData());
       }
+      else if (vm.type === 'trees' && vm.format === 'json') {
+		_createJson(e.treesToData());
+      }
       else if (vm.type === 'nodes' && vm.format === 'json') {
         _createJson(e.nodesToData());
       }
@@ -83,6 +86,10 @@
             });
         });
     }
+	
+	function saveAsTreeName(){
+		
+	}
 
     function showCompact() {
       vm.result = vm.compact;

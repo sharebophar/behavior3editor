@@ -38,7 +38,7 @@
 
     function loadFromFile() {
       dialogService
-        .openFile(false, ['.b3', '.json'])
+        .openFile(false, ['.json'])
         .then(function(path) {
           storageService
             .loadAsync(path)

@@ -73,7 +73,7 @@
               var placeholder = name.replace(/\s+/g, "_").toLowerCase();
 
               dialogService
-                .saveAs(placeholder, ['.b3', '.json'])
+                .saveAs(placeholder, ['.json'])
                 .then(function(path) {
                   _newProject(path, name);
                 });
@@ -114,7 +114,7 @@
           _openProject(path);
         } else {
           dialogService
-            .openFile(false, ['.b3', '.json'])
+            .openFile(false, ['.json'])
             .then(function(path) {
               _openProject(path);
             });

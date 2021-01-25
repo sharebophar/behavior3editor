@@ -73,14 +73,17 @@
     }
 
     function save() {
-		//alert($window.getSelection())
-		var project = $window.editor.project.get();
-		if (!project) return;
-		var tree = project.trees.getSelected();
-		var root = tree.blocks.getRoot();
-
+		var defaultName = null;
+		if (vm.type === 'trees' || vm.type === 'tree') {
+			var project = $window.editor.project.get();
+			if (!project) return;
+			var tree = project.trees.getSelected();
+			var root = tree.blocks.getRoot();
+			defaultName = root.title;
+		}
+		
 		dialogService
-        .saveAs(root.title, ['.json'])
+        .saveAs(defaultName, ['.json'])
         .then(function(path) {
           storageService
             .saveAsync(path, vm.pretty)

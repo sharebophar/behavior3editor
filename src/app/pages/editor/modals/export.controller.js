@@ -73,8 +73,14 @@
     }
 
     function save() {
-      dialogService
-        .saveAs(null, ['.json'])
+		//alert($window.getSelection())
+		var project = $window.editor.project.get();
+		if (!project) return;
+		var tree = project.trees.getSelected();
+		var root = tree.blocks.getRoot();
+
+		dialogService
+        .saveAs(root.title, ['.json'])
         .then(function(path) {
           storageService
             .saveAsync(path, vm.pretty)
